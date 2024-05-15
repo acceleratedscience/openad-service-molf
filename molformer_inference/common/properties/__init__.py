@@ -24,18 +24,18 @@
 
 from typing import Any, Dict, List
 
-from gt4sd_common.properties.core import PropertyPredictor
-from gt4sd_common.properties.crystals import CRYSTALS_PROPERTY_PREDICTOR_FACTORY
-from gt4sd_common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
-from gt4sd_common.properties.proteins import PROTEIN_PROPERTY_PREDICTOR_FACTORY
-from gt4sd_common.properties.scorer import (
+from molformer_inference.common.properties.core import PropertyPredictor
+# from gt4sd_common.properties.crystals import CRYSTALS_PROPERTY_PREDICTOR_FACTORY
+from molformer_inference.common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
+from molformer_inference.common.properties.proteins import PROTEIN_PROPERTY_PREDICTOR_FACTORY
+from molformer_inference.common.properties.scorer import (
     MoleculePropertyPredictorScorer,
     PropertyPredictorScorer,
     ProteinPropertyPredictorScorer,
 )
 
 PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {
-    **CRYSTALS_PROPERTY_PREDICTOR_FACTORY,
+    # **CRYSTALS_PROPERTY_PREDICTOR_FACTORY,
     **MOLECULE_PROPERTY_PREDICTOR_FACTORY,
     **PROTEIN_PROPERTY_PREDICTOR_FACTORY,
 }

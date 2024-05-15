@@ -25,11 +25,13 @@ import os
 from enum import Enum
 from typing import List, Optional, Union
 
-import importlib_resources
 import numpy as np
 import pandas as pd
 import torch
 import yaml
+
+# https://huggingface.co/ibm/MoLFormer-XL-both-10pct
+from transformers import AutoModel, AutoTokenizer
 
 try:
     from gt4sd_molformer.finetune.finetune_pubchem_light import (
@@ -65,13 +67,13 @@ from pydantic.v1 import Field
 # from tdc import Oracle
 # from tdc.metadata import download_receptor_oracle_nam
 
-from gt4sd_common.algorithms.core import (
+from molformer_inference.common.algorithms.core import (
     ConfigurablePropertyAlgorithmConfiguration,
     Predictor,
     PredictorAlgorithm,
 )
 
-from gt4sd_common.properties.core import (
+from molformer_inference.common.properties.core import (
     ApiTokenParameters,
     CallablePropertyPredictor,
     ConfigurableCallablePropertyPredictor,
@@ -125,9 +127,9 @@ class _Molformer(PredictorAlgorithm):
         self.batch_size = parameters.batch_size
         self.workers = parameters.workers
 
-        self.tokenizer_path = importlib_resources.files("gt4sd_molformer") / "finetune/bert_vocab.txt"
+        self.transformer_model = "ibm/MoLFormer-XL-both-10pct"
 
-        self.device = device_claim(parameters.device)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         # The parent constructor calls `self.get_model`.
         super().__init__(configuration=configuration)
@@ -140,6 +142,12 @@ class _Molformer(PredictorAlgorithm):
             config = yaml.safe_load(stream)
 
         return config, model_path
+    
+    def get_model(self):
+        return AutoModel.from_pretrained(self.transformer_model, deterministic_eval=True, trust_remote_code=True)
+
+    def get_tokenizer(self):
+        return AutoTokenizer.from_pretrained(self.transformer_model, trust_remote_code=True)
 
 
 class MolformerClassification(_Molformer):
@@ -154,21 +162,7 @@ class MolformerClassification(_Molformer):
         Returns:
             Predictor: the model.
         """
-
-        config, model_path = self.get_resources_path_and_config(resources_path)
-
-        config["num_workers"] = 0
-
-        tokenizer = MolTranBertTokenizer(self.tokenizer_path)
-
-        model = ClassificationLightningModule(config, tokenizer).load_from_checkpoint(
-            model_path,
-            strict=False,
-            config=config,
-            tokenizer=tokenizer,
-            vocab=len(tokenizer.vocab),
-        )
-
+        model = super().get_model()
         model.to(self.device)
         model.eval()
 
@@ -215,7 +209,7 @@ class MolformerMultitaskClassification(_Molformer):
 
         config["num_workers"] = 0
 
-        tokenizer = MolTranBertTokenizer(self.tokenizer_path)
+        tokenizer = self.get_tokenizer()
 
         model = MultitaskModel(config, tokenizer).load_from_checkpoint(
             model_path,
@@ -271,7 +265,7 @@ class MolformerRegression(_Molformer):
 
         config["num_workers"] = 0
 
-        tokenizer = MolTranBertTokenizer(self.tokenizer_path)
+        tokenizer = self.get_tokenizer()
 
         model = RegressionLightningModule(config, tokenizer).load_from_checkpoint(
             model_path,

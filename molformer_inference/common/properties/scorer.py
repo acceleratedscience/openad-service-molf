@@ -25,10 +25,10 @@ from typing import List, Union
 
 from rdkit import Chem
 
-from gt4sd_common.properties.core import PropertyPredictor
-from gt4sd_common.properties.molecules import AVAILABLE_MOLECULES_PROPERTY_PREDICTOR
-from gt4sd_common.properties.proteins import AVAILABLE_PROTEINS_PROPERTY_PREDICTOR
-from gt4sd_common.properties.scores import DistanceScorer
+from molformer_inference.common.properties.core import PropertyPredictor
+from molformer_inference.common.properties.molecules import AVAILABLE_MOLECULES_PROPERTY_PREDICTOR
+from molformer_inference.common.properties.proteins import AVAILABLE_PROTEINS_PROPERTY_PREDICTOR
+from molformer_inference.common.properties.scores import DistanceScorer
 
 
 class PropertyPredictorScorer(DistanceScorer):

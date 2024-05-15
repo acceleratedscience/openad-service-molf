@@ -8,6 +8,16 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
+pydantic = "^2.7.1"
+# rdkit = ">=2022.9.5, <2023.0.0"
+rdkit = "^2023.9.6"
+transformers = "^4.40.2"
+pandas = "^2.2.2"
+torch = [
+  {url = "https://download.pytorch.org/whl/cu118/torch-2.2.1%2Bcu118-cp310-cp310-linux_x86_64.whl",  platform = "linux"},
+  {url = "https://download.pytorch.org/whl/cpu/torch-2.2.1%2Bcpu-cp310-cp310-win_amd64.whl",  platform = "win32" },
+  {url = "https://download.pytorch.org/whl/cpu/torch-2.2.1-cp310-none-macosx_10_9_x86_64.whl",  platform = "darwin" }
+]
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "*"

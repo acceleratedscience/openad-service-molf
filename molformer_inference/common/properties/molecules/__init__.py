@@ -22,10 +22,9 @@
 # SOFTWARE.
 #
 from typing import Dict, Tuple, Type, Union
-
-from ..common.algorithms.core import PredictorAlgorithm
-from ..common.properties.core import PropertyPredictor, PropertyPredictorParameters
-from ..common.properties.molecules.core import (
+from molformer_inference.common.algorithms.core import PredictorAlgorithm
+from molformer_inference.common.properties.core import PropertyPredictor, PropertyPredictorParameters
+from molformer_inference.common.properties.molecules.core import (
     MolformerClassification,
     MolformerClassificationParameters,
     MolformerMultitaskClassification,

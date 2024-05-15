@@ -6,7 +6,7 @@ from properties__init__ import (
     PROPERTY_PREDICTOR_TYPE,
     PROPERTY_PREDICTOR_FACTORY,
     PROTEIN_PROPERTY_PREDICTOR_FACTORY,
-    CRYSTALS_PROPERTY_PREDICTOR_FACTORY,
+    # CRYSTALS_PROPERTY_PREDICTOR_FACTORY,
     MOLECULE_PROPERTY_PREDICTOR_FACTORY,
 )
 
@@ -133,4 +133,4 @@ def generate_property_service_defs(target_type, PropertyPredictorFactory, Proper
 if __name__ == "__main__":
     generate_property_service_defs("molecule", MOLECULE_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, "./")
     generate_property_service_defs("protein", PROTEIN_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, "./")
-    generate_property_service_defs("crystal", CRYSTALS_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, "./")
+    # generate_property_service_defs("crystal", CRYSTALS_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, "./")
