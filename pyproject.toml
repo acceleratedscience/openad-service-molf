@@ -9,11 +9,29 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
 
+# torch = { url = "https://download.pytorch.org/whl/cu102/torch-1.12.1%2Bcu102-cp310-cp310-linux_x86_64.whl#sha256=3ce9ed0ce39f4c414661b2ba6802d56bfc1c70b9fea5bd1d38f828311a7e9871" }
+# torch = { url = "https://download.pytorch.org/whl/cu116/torch-1.12.1%2Bcu116-cp310-cp310-linux_x86_64.whl#sha256=b6bc31244aa2818929fbb30c483c221df471e9d856e805c5a1ff72b131ae9e7b" }
+setuptools = "^69.5.1"
+# gt4sd-molformer = { git= "https://github.com/brian316/gt4sd-molformer.git" }
+
+datasets="^1.11.0"
+debugpy="^1.6.6"
+importlib-resources="^5.10.0"
+pandas="^1.3.5"
+torch="^1.12.1"
+rdkit-pypi="^2021.9.4"
+scikit-learn="^1.0.0"
+transformers="^4.26.0"
+wheel="^0.26"
+pip = "^24.0"
+# pytorch_lightning="1.7.7"
+# pytorch-fast-transformers="0.4.0"
+
 [tool.poetry.group.dev.dependencies]
 pre-commit = "*"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core", "setuptools", "wheel", "setuptools-cpp", "torch"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]

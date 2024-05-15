@@ -27,7 +27,7 @@ __version__ = "1.3.2"
 __name__ = "gt4sd"
 
 # NOTE: configure SSL to allow unverified contexts by default
-from gt4sd_common.configuration import GT4SDConfiguration
+from .configuration import GT4SDConfiguration
 
 gt4sd_configuration_instance = GT4SDConfiguration.get_instance()
 

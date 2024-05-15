@@ -30,7 +30,7 @@ from typing import Dict, Optional, Set
 
 from pydantic_settings import BaseSettings
 
-from gt4sd_common.s3 import (
+from .s3 import (
     GT4SDS3Client,
     S3SyncError,
     sync_folder_with_s3,

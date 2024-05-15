@@ -29,7 +29,7 @@ from typing import List, Optional, Set
 
 from minio import Minio
 
-from gt4sd_common.exceptions import S3SyncError
+from .exceptions import S3SyncError
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())

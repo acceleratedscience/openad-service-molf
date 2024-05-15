@@ -127,7 +127,8 @@ class _Molformer(PredictorAlgorithm):
 
         self.tokenizer_path = importlib_resources.files("gt4sd_molformer") / "finetune/bert_vocab.txt"
 
-        self.device = device_claim(parameters.device)
+        self.device = torch.device("torch" if torch.cuda.is_available() else "cpu")
+        # self.device = device_claim(parameters.device)
 
         # The parent constructor calls `self.get_model`.
         super().__init__(configuration=configuration)
