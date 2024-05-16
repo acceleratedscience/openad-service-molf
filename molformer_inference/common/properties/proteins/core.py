@@ -28,6 +28,7 @@ from ..core import (
     ConfigurableCallablePropertyPredictor,
     PropertyPredictorParameters,
 )
+
 from .functions import (
     aliphatic_index,
     aromaticity,

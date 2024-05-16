@@ -27,24 +27,23 @@ from typing import Any, Dict, List
 # from gt4sd_common.properties.core import PropertyPredictor
 from property_core import PropertyPredictor
 
-from common.properties.scorer import (
-    MoleculePropertyPredictorScorer,
-    PropertyPredictorScorer,
-    ProteinPropertyPredictorScorer,
-)
+# from common.properties.scorer import (
+#     MoleculePropertyPredictorScorer,
+#     PropertyPredictorScorer,
+#     ProteinPropertyPredictorScorer,
+# )
 
 PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {}
 PROPERTY_PREDICTOR_TYPE = []
 AVAILABLE_PROPERTY_PREDICTORS = PROPERTY_PREDICTOR_FACTORY.keys()
 
 
-try:
-    from common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
 
-    PROPERTY_PREDICTOR_FACTORY.update(MOLECULE_PROPERTY_PREDICTOR_FACTORY)
-    PROPERTY_PREDICTOR_TYPE.append("get_molecule_property")
-except:
-    pass
+print("test")
+from common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
+PROPERTY_PREDICTOR_FACTORY.update(MOLECULE_PROPERTY_PREDICTOR_FACTORY)
+PROPERTY_PREDICTOR_TYPE.append("get_molecule_property")
+
 
 try:
     from common.properties.proteins import PROTEIN_PROPERTY_PREDICTOR_FACTORY
@@ -124,7 +123,7 @@ class PropertyPredictorRegistry:
         scorer_name: str,
         target: float,
         parameters: Dict[str, Any] = {},
-    ) -> PropertyPredictorScorer:
+    ):
         """Get a property predictor scorer.
 
         Args:

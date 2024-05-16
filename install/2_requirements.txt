@@ -1,0 +1,1 @@
+gt4sd_molformer @ git+https://github.com/GT4SD/gt4sd-molformer.git@b9722e18f15d0a0da6d0fc1743a8f2c7c677dbfb

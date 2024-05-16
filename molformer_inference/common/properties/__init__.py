@@ -25,7 +25,7 @@
 from typing import Any, Dict, List
 
 from ..properties.core import PropertyPredictor
-from gt4sd_common.properties.crystals import CRYSTALS_PROPERTY_PREDICTOR_FACTORY
+# from ..properties.crystals import CRYSTALS_PROPERTY_PREDICTOR_FACTORY
 from ..properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
 from ..properties.proteins import PROTEIN_PROPERTY_PREDICTOR_FACTORY
 from ..properties.scorer import (
@@ -35,7 +35,7 @@ from ..properties.scorer import (
 )
 
 PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {
-    **CRYSTALS_PROPERTY_PREDICTOR_FACTORY,
+    # **CRYSTALS_PROPERTY_PREDICTOR_FACTORY,
     **MOLECULE_PROPERTY_PREDICTOR_FACTORY,
     **PROTEIN_PROPERTY_PREDICTOR_FACTORY,
 }

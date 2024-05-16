@@ -25,33 +25,53 @@ from typing import Dict, Tuple, Type, Union
 
 from ...algorithms.core import PredictorAlgorithm
 from ...properties.core import PropertyPredictor, PropertyPredictorParameters
-from ...properties.molecules.core import (
-    MolformerClassification,
-    MolformerClassificationParameters,
-    MolformerMultitaskClassification,
-    MolformerMultitaskClassificationParameters,
-    MolformerRegression,
-    MolformerRegressionParameters,
+from ...properties.crystals.core import (
+    AbsoluteEnergy,
+    AbsoluteEnergyParameters,
+    BandGap,
+    BandGapParameters,
+    BulkModuli,
+    BulkModuliParameters,
+    FermiEnergy,
+    FermiEnergyParameters,
+    FormationEnergy,
+    FormationEnergyParameters,
+    MetalNonMetalClassifier,
+    MetalNonMetalClassifierParameters,
+    MetalSemiconductorClassifier,
+    MetalSemiconductorClassifierParameters,
+    PoissonRatio,
+    PoissonRatioParameters,
+    ShearModuli,
+    ShearModuliParameters,
 )
 
-# NOTE: all functions can be called with either a SMILES or a rdkit.Chem.Mol object.
-MOLECULE_PROPERTY_PREDICTOR_FACTORY: Dict[
+CRYSTALS_PROPERTY_PREDICTOR_FACTORY: Dict[
     str,
     Tuple[
         Union[Type[PropertyPredictor], Type[PredictorAlgorithm]],
         Type[PropertyPredictorParameters],
     ],
 ] = {
-    "molformer_classification": (
-        MolformerClassification,
-        MolformerClassificationParameters,
+    #  ml predicted properties
+    "formation_energy": (FormationEnergy, FormationEnergyParameters),
+    "absolute_energy": (AbsoluteEnergy, AbsoluteEnergyParameters),
+    "band_gap": (BandGap, BandGapParameters),
+    "fermi_energy": (FermiEnergy, FermiEnergyParameters),
+    "bulk_moduli": (BulkModuli, BulkModuliParameters),
+    "shear_moduli": (ShearModuli, ShearModuliParameters),
+    "poisson_ratio": (PoissonRatio, PoissonRatioParameters),
+    "metal_semiconductor_classifier": (
+        MetalSemiconductorClassifier,
+        MetalSemiconductorClassifierParameters,
     ),
-    "molformer_multitask_classification": (
-        MolformerMultitaskClassification,
-        MolformerMultitaskClassificationParameters,
+    "metal_nonmetal_classifier": (
+        MetalNonMetalClassifier,
+        MetalNonMetalClassifierParameters,
     ),
-    "molformer_regression": (MolformerRegression, MolformerRegressionParameters),
 }
 
 
-AVAILABLE_MOLECULES_PROPERTY_PREDICTOR = sorted(MOLECULE_PROPERTY_PREDICTOR_FACTORY.keys())
+AVAILABLE_CRYSTALS_PROPERTY_PREDICTOR = sorted(
+    CRYSTALS_PROPERTY_PREDICTOR_FACTORY.keys()
+)

@@ -65,13 +65,13 @@ from pydantic.v1 import Field
 # from tdc import Oracle
 # from tdc.metadata import download_receptor_oracle_nam
 
-from gt4sd_common.algorithms.core import (
+from ...algorithms.core import (
     ConfigurablePropertyAlgorithmConfiguration,
     Predictor,
     PredictorAlgorithm,
 )
 
-from gt4sd_common.properties.core import (
+from ...properties.core import (
     ApiTokenParameters,
     CallablePropertyPredictor,
     ConfigurableCallablePropertyPredictor,

@@ -24,20 +24,20 @@
 from typing import Dict, Tuple, Type
 
 from ..core import PropertyPredictor, PropertyPredictorParameters
-from .core import (
-    AliphaticIndex,
-    AmideConfiguration,
-    AmidePhConfiguration,
-    Aromaticity,
-    BomanIndex,
-    Charge,
-    ChargeDensity,
-    HydrophobicRatio,
-    Instability,
-    IsoelectricPoint,
-    Length,
-    MolecularWeight,
-)
+# from .core import (
+#     AliphaticIndex,
+#     AmideConfiguration,
+#     AmidePhConfiguration,
+#     Aromaticity,
+#     BomanIndex,
+#     Charge,
+#     ChargeDensity,
+#     HydrophobicRatio,
+#     Instability,
+#     IsoelectricPoint,
+#     Length,
+#     MolecularWeight,
+# )
 
 # NOTE: all functions can be called with either an AA sequence or a rdkit.Chem.Mol object.
 PROTEIN_PROPERTY_PREDICTOR_FACTORY: Dict[str, Tuple[Type[PropertyPredictor], Type[PropertyPredictorParameters]]] = {}
