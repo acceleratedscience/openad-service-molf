@@ -4,4 +4,3 @@ guacamol @ git+https://github.com/brian316/guacamol.git@781171cf472ba7e7ad7711c3
 minio==7.2.7
 pydantic==2.7.1
 pydantic-settings==2.2.1
-jupyter

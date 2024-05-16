@@ -126,11 +126,14 @@ def generate_property_service_defs(target_type, PropertyPredictorFactory, Proper
                 f"{def_locations}/property_service_defintion_{target_type}s_" + x["valid_types"][0] + ".json",
                 "w",
             )
-        handle.write(json.dumps(x))
+        handle.write(json.dumps(x, indent=2))
         handle.close()
 
 
 if __name__ == "__main__":
-    generate_property_service_defs("molecule", MOLECULE_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, "./")
-    generate_property_service_defs("protein", PROTEIN_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, "./")
-    # generate_property_service_defs("crystal", CRYSTALS_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, "./")
+    import os
+    import definitions.services as new_prop_services
+    services_path = os.path.abspath(os.path.dirname(new_prop_services.__file__))
+    generate_property_service_defs("molecule", MOLECULE_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, services_path)
+    generate_property_service_defs("protein", PROTEIN_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, services_path)
+    # generate_property_service_defs("crystal", CRYSTALS_PROPERTY_PREDICTOR_FACTORY, PropertyPredictorRegistry, services_path)

@@ -27,23 +27,29 @@ from typing import Any, Dict, List
 # from gt4sd_common.properties.core import PropertyPredictor
 from property_core import PropertyPredictor
 
-# from common.properties.scorer import (
-#     MoleculePropertyPredictorScorer,
-#     PropertyPredictorScorer,
-#     ProteinPropertyPredictorScorer,
-# )
+from common.properties.scorer import (
+    MoleculePropertyPredictorScorer,
+    PropertyPredictorScorer,
+    ProteinPropertyPredictorScorer,
+)
 
 PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {}
 PROPERTY_PREDICTOR_TYPE = []
-AVAILABLE_PROPERTY_PREDICTORS = PROPERTY_PREDICTOR_FACTORY.keys()
 
 
+# from common.properties.crystals import CRYSTALS_PROPERTY_PREDICTOR_FACTORY
 
-print("test")
-from common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
-PROPERTY_PREDICTOR_FACTORY.update(MOLECULE_PROPERTY_PREDICTOR_FACTORY)
-PROPERTY_PREDICTOR_TYPE.append("get_molecule_property")
+# PROPERTY_PREDICTOR_FACTORY.update(CRYSTALS_PROPERTY_PREDICTOR_FACTORY)
+# PROPERTY_PREDICTOR_TYPE.append("get_crystal_property")
 
+
+try:
+    from common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
+
+    PROPERTY_PREDICTOR_FACTORY.update(MOLECULE_PROPERTY_PREDICTOR_FACTORY)
+    PROPERTY_PREDICTOR_TYPE.append("get_molecule_property")
+except:
+    pass
 
 try:
     from common.properties.proteins import PROTEIN_PROPERTY_PREDICTOR_FACTORY
@@ -53,25 +59,27 @@ try:
 except:
     pass
 
+AVAILABLE_PROPERTY_PREDICTORS = PROPERTY_PREDICTOR_FACTORY.keys()
 
-# PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {}
+
+PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {}
 
 
-# PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {
+PROPERTY_PREDICTOR_FACTORY: Dict[str, Any] = {
 #    **CRYSTALS_PROPERTY_PREDICTOR_FACTORY,
-#    **MOLECULE_PROPERTY_PREDICTOR_FACTORY,
-#    **PROTEIN_PROPERTY_PREDICTOR_FACTORY,
-# }
+   **MOLECULE_PROPERTY_PREDICTOR_FACTORY,
+   **PROTEIN_PROPERTY_PREDICTOR_FACTORY,
+}
 
-# AVAILABLE_PROPERTY_PREDICTORS = sorted(PROPERTY_PREDICTOR_FACTORY.keys())
+AVAILABLE_PROPERTY_PREDICTORS = sorted(PROPERTY_PREDICTOR_FACTORY.keys())
 
-# SCORING_FACTORY_WITH_PROPERTY_PREDICTORS = {
-#    "property_predictor_scorer": PropertyPredictorScorer,
-#    "molecule_property_predictor_scorer": MoleculePropertyPredictorScorer,
-#    "protein_property_predictor_scorer": ProteinPropertyPredictorScorer,
-# }
+SCORING_FACTORY_WITH_PROPERTY_PREDICTORS = {
+   "property_predictor_scorer": PropertyPredictorScorer,
+   "molecule_property_predictor_scorer": MoleculePropertyPredictorScorer,
+   "protein_property_predictor_scorer": ProteinPropertyPredictorScorer,
+}
 
-# AVAILABLE_SCORING_WITH_PROPERTY_PREDICTORS = sorted(SCORING_FACTORY_WITH_PROPERTY_PREDICTORS.keys())
+AVAILABLE_SCORING_WITH_PROPERTY_PREDICTORS = sorted(SCORING_FACTORY_WITH_PROPERTY_PREDICTORS.keys())
 AVAILABLE_SCORING_WITH_PROPERTY_PREDICTORS = []
 SCORING_FACTORY_WITH_PROPERTY_PREDICTORS = {}
 
@@ -123,7 +131,7 @@ class PropertyPredictorRegistry:
         scorer_name: str,
         target: float,
         parameters: Dict[str, Any] = {},
-    ):
+    ) -> PropertyPredictorScorer:
         """Get a property predictor scorer.
 
         Args:
