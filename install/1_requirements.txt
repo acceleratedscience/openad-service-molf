@@ -1,6 +1,7 @@
-guacamol @ git+https://github.com/brian316/guacamol.git@781171cf472ba7e7ad7711c3ad518e544ac6e5ed
 torch==1.12.1
+torchmetrics==0.11.4
+guacamol @ git+https://github.com/brian316/guacamol.git@781171cf472ba7e7ad7711c3ad518e544ac6e5ed
 minio==7.2.7
 pydantic==2.7.1
 pydantic-settings==2.2.1
-# importlib_resources==6.4.0
+jupyter

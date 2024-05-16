@@ -31,33 +31,32 @@ import pandas as pd
 import torch
 import yaml
 
-try:
-    from gt4sd_molformer.finetune.finetune_pubchem_light import (
-        LightningModule as RegressionLightningModule,
-    )
-    from gt4sd_molformer.finetune.finetune_pubchem_light import (
-        PropertyPredictionDataModule as RegressionDataModule,
-    )
-    from gt4sd_molformer.finetune.finetune_pubchem_light import (
-        PropertyPredictionDataset as RegressionDataset,
-    )
-    from gt4sd_molformer.finetune.finetune_pubchem_light_classification import (
-        LightningModule as ClassificationLightningModule,
-    )
-    from gt4sd_molformer.finetune.finetune_pubchem_light_classification import (
-        PropertyPredictionDataModule as ClassificationDataModule,
-    )
-    from gt4sd_molformer.finetune.finetune_pubchem_light_classification import (
-        PropertyPredictionDataset as ClassificationDataset,
-    )
-    from gt4sd_molformer.finetune.finetune_pubchem_light_classification_multitask import (
-        MultitaskEmbeddingDataset,
-        MultitaskModel,
-        PropertyPredictionDataModule,
-    )
-    from gt4sd_molformer.finetune.ft_tokenizer.ft_tokenizer import MolTranBertTokenizer
-except:  # noqa: E722
-    pass
+
+from gt4sd_molformer.finetune.finetune_pubchem_light import (
+    LightningModule as RegressionLightningModule,
+)
+from gt4sd_molformer.finetune.finetune_pubchem_light import (
+    PropertyPredictionDataModule as RegressionDataModule,
+)
+from gt4sd_molformer.finetune.finetune_pubchem_light import (
+    PropertyPredictionDataset as RegressionDataset,
+)
+from gt4sd_molformer.finetune.finetune_pubchem_light_classification import (
+    LightningModule as ClassificationLightningModule,
+)
+from gt4sd_molformer.finetune.finetune_pubchem_light_classification import (
+    PropertyPredictionDataModule as ClassificationDataModule,
+)
+from gt4sd_molformer.finetune.finetune_pubchem_light_classification import (
+    PropertyPredictionDataset as ClassificationDataset,
+)
+from gt4sd_molformer.finetune.finetune_pubchem_light_classification_multitask import (
+    MultitaskEmbeddingDataset,
+    MultitaskModel,
+    PropertyPredictionDataModule,
+)
+from gt4sd_molformer.finetune.ft_tokenizer.ft_tokenizer import MolTranBertTokenizer
+
 
 
 from pydantic.v1 import Field
@@ -127,7 +126,7 @@ class _Molformer(PredictorAlgorithm):
 
         self.tokenizer_path = importlib_resources.files("gt4sd_molformer") / "finetune/bert_vocab.txt"
 
-        self.device = torch.device("torch" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         # self.device = device_claim(parameters.device)
 
         # The parent constructor calls `self.get_model`.
