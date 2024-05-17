@@ -14,7 +14,8 @@
 from molformer_inference.common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
 
 property_class, parameters_class = MOLECULE_PROPERTY_PREDICTOR_FACTORY["molformer_regression"]
-model = property_class(parameters_class(algorithm_version="molformer_alpha_public_test"))
+var_a = parameters_class(algorithm_version="molformer_alpha_public_test")
+model = property_class(var_a)
 
 model(input=["OC12COC3=NCC1C23"])
 

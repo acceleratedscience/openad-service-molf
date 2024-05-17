@@ -3,9 +3,10 @@ datasets>=1.11.0
 debugpy>=1.6.6
 importlib-resources>=5.10.0
 pandas>=1.3.5
-pytorch-fast-transformers>=0.4.0
 rdkit-pypi>=2020.9.5.2,<=2021.9.4
 scikit-learn>=1.0.0
 wheel>=0.26
-pytorch-lightning==2.2.1
+pytorch-lightning==2.0.1
+pytorch-fast-transformers>=0.4.0
 gt4sd_molformer @ git+https://github.com/brian316/gt4sd-molformer
+guacamol @ git+https://github.com/brian316/guacamol.git@781171cf472ba7e7ad7711c3ad518e544ac6e5ed
