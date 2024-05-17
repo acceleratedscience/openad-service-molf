@@ -1,8 +1,6 @@
-from fastapi import FastAPI, HTTPException, Request, status
-from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 from call_property_services import service_requester
-from pydantic import BaseModel
 
 
 app = FastAPI()

@@ -8,7 +8,8 @@
 # ### Models for regression
 # 
 # This method can be used for any regression task.
-
+import time
+start = time.time()
 # %%
 # from gt4sd.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
 from molformer_inference.common.properties.molecules import MOLECULE_PROPERTY_PREDICTOR_FACTORY
@@ -44,4 +45,4 @@ model = property_class(parameters_class(algorithm_version="molformer_clintox_tes
 
 print(model(["Ic1cc(ccc1)C[NH2+]C[C@@H](O)[C@@H](NC(=O)c1cc(cc(c1)C)C(=O)N(CCC)CCC)Cc1cc(F)cc(F)c1"]))
 
-
+print(f"time taken: {time.time()-start}")

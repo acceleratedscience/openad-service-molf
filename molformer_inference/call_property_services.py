@@ -12,7 +12,7 @@ import copy
 from properties__init__ import PropertyPredictorRegistry, PROPERTY_PREDICTOR_TYPE
 
 # from ray import serve
-import openad_model_property_service.services_common as common
+import services_common as common
 from pydantic import BaseModel
 
 
