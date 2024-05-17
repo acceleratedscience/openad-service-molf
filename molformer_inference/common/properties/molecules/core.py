@@ -161,7 +161,7 @@ class MolformerClassification(_Molformer):
 
         tokenizer = MolTranBertTokenizer(self.tokenizer_path)
 
-        model = ClassificationLightningModule(config, tokenizer).load_from_checkpoint(
+        model = ClassificationLightningModule.load_from_checkpoint(
             model_path,
             strict=False,
             config=config,
@@ -217,7 +217,7 @@ class MolformerMultitaskClassification(_Molformer):
 
         tokenizer = MolTranBertTokenizer(self.tokenizer_path)
 
-        model = MultitaskModel(config, tokenizer).load_from_checkpoint(
+        model = MultitaskModel.load_from_checkpoint(
             model_path,
             strict=False,
             config=config,
@@ -273,7 +273,7 @@ class MolformerRegression(_Molformer):
 
         tokenizer = MolTranBertTokenizer(self.tokenizer_path)
 
-        model = RegressionLightningModule(config, tokenizer).load_from_checkpoint(
+        model = RegressionLightningModule.load_from_checkpoint(
             model_path,
             strict=False,
             config=config,
