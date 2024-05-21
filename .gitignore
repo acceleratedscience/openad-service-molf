@@ -180,5 +180,4 @@ pyrightconfig.json
 
 # local dev files
 dev_scripts/
-*.cfg
 *.tree
