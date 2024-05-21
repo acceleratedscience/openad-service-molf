@@ -29,7 +29,13 @@ async def get_service_defs():
 
 def main():
     import uvicorn
+    import torch
 
+    if torch.cuda.is_available():
+        print(f"\n[i] cuda is available: {torch.cuda.is_available()}")
+        print(f"[i] cuda version: {torch.version.cuda}\n")
+        print(f"[i] device name: {torch.cuda.get_device_name(0)}")
+        print(f"[i] torch version: {torch.__version__}\n")
     uvicorn.run(app, host="0.0.0.0", port=8080)
 
 
