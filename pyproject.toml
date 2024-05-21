@@ -10,11 +10,10 @@ readme = "README.md"
 python = ">=3.9,<3.11"
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "*"
-ipykernel = "^6.29.4"
+
 
 [build-system]
-requires = ["poetry-core", "setuptools", "wheel", "setuptools-cpp", "torch"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]

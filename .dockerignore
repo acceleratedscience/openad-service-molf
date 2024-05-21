@@ -1,0 +1,6 @@
+.venv*
+.vscode
+.github
+.dev*
+.ruff_cache
+.pre-commit-config.yaml
