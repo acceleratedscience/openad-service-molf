@@ -24,8 +24,7 @@
     },
     "algorithm_version": {
       "title": "Algorithm Version",
-      "description": "Version of the algorithm",
-      "example": "v0",
+      "default": "molformer_alpha_public_test",
       "type": "string"
     },
     "algorithm_application": {
@@ -51,9 +50,7 @@
       "type": "string"
     }
   },
-  "required_parameters": [
-    "algorithm_version"
-  ],
+  "required_parameters": [],
   "category": "properties",
   "sub_category": "molecules",
   "wheel_package": "",

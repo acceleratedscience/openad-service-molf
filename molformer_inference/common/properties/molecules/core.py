@@ -98,14 +98,17 @@ class MolformerParameters(S3ParametersMolecules):
 
 class MolformerClassificationParameters(MolformerParameters):
     algorithm_application: str = "classification"
+    algorithm_version: str = "molformer_bace_public_test"
 
 
 class MolformerMultitaskClassificationParameters(MolformerParameters):
     algorithm_application: str = "multitask_classification"
+    algorithm_version: str = "molformer_clintox_test"
 
 
 class MolformerRegressionParameters(MolformerParameters):
     algorithm_application: str = "regression"
+    algorithm_version: str = "molformer_alpha_public_test"
 
 
 class _Molformer(PredictorAlgorithm):

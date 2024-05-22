@@ -27,6 +27,9 @@ ENV PATH="/src/.venv/bin:$PATH"
 RUN cd install && ./install.sh
 RUN pip install -e .
 
+# generate definitions
+RUN ["/src/.venv/bin/python", "/src/molformer_inference/generate_property_service_defs.py"]
+
 EXPOSE 8080 80
 
 CMD ["/src/.venv/bin/python", "/src/molformer_inference/service.py"]
