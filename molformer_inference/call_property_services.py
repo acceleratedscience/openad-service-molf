@@ -115,18 +115,6 @@ class service_requester:
         if current_service is None:
             print("service mismatch")
             return None
-        if current_service["service_name"] in [
-            "get molecule organtox",
-            "get molecule clintox",
-            "get molecule tox21",
-            "get molecule sider",
-            "get molecule askos",
-            "get molecule docking",
-            "get molecule docking_tdc",
-            "get molecule molformer_regression",
-            "get molecule molformer_multitask_classification",
-        ]:
-            return [current_service["service_name"] + "   Not Currently Available"]
         if category == "properties":
             if self.property_requestor is None:
                 self.property_requestor = request_properties()
