@@ -24,7 +24,7 @@ COPY . .
 RUN pip install virtualenv
 RUN virtualenv .venv
 ENV PATH="/src/.venv/bin:$PATH"
-RUN cd install && ./install.sh
+RUN cd install && chmod 755 install.sh && ./install.sh
 RUN pip install -e .
 
 # generate definitions
