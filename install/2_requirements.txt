@@ -1,0 +1,6 @@
+-i https://download.pytorch.org/whl/cu118
+torch==2.0.1
+-i https://download.pytorch.org/whl/cu118
+torchvision==0.15.2
+-i https://download.pytorch.org/whl/cu118
+torchaudio==2.0.2
