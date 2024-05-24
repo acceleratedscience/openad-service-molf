@@ -9,16 +9,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
 
-[tool.poetry.group.dev.dependencies]
-
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 fix = true
-line-length = 88
+line-length = 120
 target-version = "py310"
 show-fixes = true
 
