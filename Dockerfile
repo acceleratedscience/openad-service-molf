@@ -13,7 +13,7 @@ WORKDIR /src
 COPY . .
 
 RUN \
-    pip install -r install/requirements.txt && \
+    pip install -r install/requirements.txt --no-cache --no-cache-dir && \
     rm -rf install
 
 # generate definitions
