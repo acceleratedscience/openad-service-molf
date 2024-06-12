@@ -17,7 +17,16 @@ RUN \
     rm -rf install
 
 # generate definitions
-RUN ["python", "/src/molformer_inference/generate_property_service_defs.py"]
+# RUN ["python", "/src/molformer_inference/generate_property_service_defs.py"]
+
+# set permissions for OpenShift
+# from https://docs.openshift.com/container-platform/4.5/openshift_images/create-images.html#images-create-guide-general_create-images
+RUN mkdir -p ./oracle /.config /.cache /.gt4sd /.paccmann && \
+    chgrp -R 0 ./oracle /.config /.cache /.gt4sd /.paccmann && \
+    chmod -R g=u ./oracle /.config /.cache /.gt4sd /.paccmann
+# excluding the .venv directory from recursive permissions
+RUN find /src -path /src/.venv -prune -o -print | xargs chgrp 0 && \
+    find /src -path /src/.venv -prune -o -exec chmod g=u {} +
 
 EXPOSE 8080 80
 
