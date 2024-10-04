@@ -45,6 +45,8 @@ RUN poetry run pip install pytorch-fast-transformers --no-build-isolation --no-c
 
 # Copy application code
 COPY . .
+
+# Install project as a package so imports work
 RUN poetry install
 
 # Set default command
