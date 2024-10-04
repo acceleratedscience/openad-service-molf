@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
-openad-service-utils = {git = "https://github.com/acceleratedscience/openad_service_utils.git"}
+openad-service-utils = {git = "https://github.com/acceleratedscience/openad_service_utils.git", tag="0.2.3"}
 gt4sd_molformer = {git = "https://github.com/brian316/gt4sd-molformer.git"}
 pandas = "^2.2.2"
 importlib-resources = "5.10.0"
