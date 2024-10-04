@@ -1,4 +1,4 @@
-from next_implementation.molformer_implementation import MolformerRegression, MolformerMultitaskClassification, MolformerClassification
+from molformer_inference.molformer_implementation import MolformerRegression, MolformerMultitaskClassification, MolformerClassification
 
 # register services
 MolformerRegression.register()

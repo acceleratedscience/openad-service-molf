@@ -1,4 +1,6 @@
 *
 
 !molformer_inference
-!install
+!pyproject.toml
+!poetry.lock
+!README.md
