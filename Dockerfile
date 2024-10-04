@@ -1,33 +1,51 @@
-FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+# Use NVIDIA's CUDA 11.8 base image with UBI 8 (Red Hat Universal Base Image)
+FROM nvidia/cuda:11.8.0-runtime-ubi8
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=America/Los_Angeles
+# Install required dependencies
+RUN dnf update -y && \
+    dnf install -y \
+    gcc \
+    # g++ needed for pytorch-fast-transformers build
+    gcc-c++ \
+    openssl-devel \
+    bzip2-devel \
+    libffi-devel \
+    zlib-devel \
+    wget \
+    make
 
-# update and install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common \
-    build-essential curl git \
-    && rm -rf /var/lib/apt/lists/*
+# Download and install Python 3.10
+RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz && \
+    tar xzf Python-3.10.0.tgz && \
+    cd Python-3.10.0 && \
+    ./configure --enable-optimizations && \
+    make altinstall
 
-# Install deps
-WORKDIR /src
+# Set Python 3.10 as the default python version
+RUN ln -sf /usr/local/bin/python3.10 /usr/bin/python3 && \
+    ln -sf /usr/local/bin/pip3.10 /usr/bin/pip3
+
+# Clean up
+RUN dnf clean all && \
+    rm -rf Python-3.10.0 Python-3.10.0.tgz
+
+# Upgrade pip
+RUN python3 -m pip install --upgrade pip
+
+# Set up a working directory
+WORKDIR /workspace
+
+# Copy pyproject.toml to the working directory (install before copying source)
+COPY pyproject.toml .
+
+# Install additional dependencies
+RUN python3 -m pip install poetry
+RUN poetry install --no-cache --no-interaction --no-root
+RUN poetry run pip install pytorch-fast-transformers --no-build-isolation --no-cache-dir
+
+# Copy application code
 COPY . .
+RUN poetry install
 
-RUN \
-    pip install -r install/requirements.txt --no-cache --no-cache-dir && \
-    rm -rf install
-
-# generate definitions
-# RUN ["python", "/src/molformer_inference/generate_property_service_defs.py"]
-
-# set permissions for OpenShift
-# from https://docs.openshift.com/container-platform/4.5/openshift_images/create-images.html#images-create-guide-general_create-images
-RUN mkdir -p ./oracle /.config /.cache /.gt4sd /.paccmann && \
-    chgrp -R 0 ./oracle /.config /.cache /.gt4sd /.paccmann && \
-    chmod -R g=u ./oracle /.config /.cache /.gt4sd /.paccmann
-# excluding the .venv directory from recursive permissions
-RUN find /src -path /src/.venv -prune -o -print | xargs chgrp 0 && \
-    find /src -path /src/.venv -prune -o -exec chmod g=u {} +
-
-EXPOSE 8080 80
-
-CMD ["python", "/src/molformer_inference/service.py"]
+# Set default command
+CMD ["poetry", "run", "python", "molformer_inference/serve.py"]
