@@ -1,10 +1,17 @@
-# Molformer Inference Service
+# Molformer Inference for SMILES
 
 <!-- description -->
-This is part of the OpenAD Framework OpenSource Initiative and is designed to provide Model Services for OpenAD toolkit.
 <!-- /description -->
 
-# Contribute
+For instructions on how to deploy and use this service in OpenAD, please refer to the [OpenAD docs](https://openad.accelerate.science/docs/model-service/prepackaged-models).
 
-### Pull Request checklist
-1. Install [pre-commit](https://pre-commit.com/) to your machine and then run `pre-commit install` in this project root
+<br>
+
+## Deployment Options
+
+- ✅ [Deploy locally using a Python virtual environment](https://openad.accelerate.science/docs/model-service/prepackaged-models)
+- ✅ [Deploy locally via container](https://openad.accelerate.science/docs/model-service/prepackaged-models#containerizing-a-model)
+- ❌ [Deploy locally via container with compose.yml](https://openad.accelerate.science/docs/model-service/prepackaged-models#deployment-via-container-composeyml)
+- ✅ [Deploy on OpenShift](https://openad.accelerate.science/docs/model-service/prepackaged-models)
+- ✅ [Deploy on SkyPilot](https://openad.accelerate.science/docs/model-service/prepackaged-models/#deploying-to-skypilot-on-aws)
+
