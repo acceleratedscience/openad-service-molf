@@ -1,4 +1,4 @@
-# Molformer Inference for SMILES
+# MoLFormer Inference for SMILES
 
 <!-- description -->
 <!-- /description -->
