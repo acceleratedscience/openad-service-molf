@@ -181,3 +181,6 @@ pyrightconfig.json
 # local dev files
 dev_scripts/
 *.tree
+
+# Other
+*.DS_Store
