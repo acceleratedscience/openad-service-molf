@@ -1,4 +1,4 @@
-# MoLFormer Inference for SMILES
+# MoLFormer / Property Prediction Highlights on SMILES Input
 
 <!--
 The description & support tags are consumed by the generate_docs() script
@@ -10,6 +10,7 @@ https://openad.accelerate.science/docs/model-service/available-services
 <!-- support:gcloud:false -->
 
 <!-- description -->
+MoLFormer / Three finetuned property prediction models on MoleculeNet tasks: BACE classification, ClinTox multiclass, and QM9 alpha regression.
 <!-- /description -->
 
 For instructions on how to deploy and use this service in OpenAD, please refer to the [OpenAD docs](https://openad.accelerate.science/docs/model-service/deploying-models).
