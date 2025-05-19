@@ -1,4 +1,4 @@
-# MoLFormer / Property Prediction Highlights on SMILES Input
+# MoLFormer &nbsp;/&nbsp; Property Prediction Highlights on SMILES Input
 
 <!--
 The description & support tags are consumed by the generate_docs() script
