@@ -1,4 +1,4 @@
-# MoLFormer Inference for SMILES
+# MoLFormer &nbsp;/&nbsp; Inference for SMILES
 
 <!--
 The description & support tags are consumed by the generate_docs() script
